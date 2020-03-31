@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://InMapleWoods.github.io</id>
     <title>林中风吟</title>
-    <updated>2020-03-27T09:56:53.940Z</updated>
+    <updated>2020-03-31T16:10:26.287Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://InMapleWoods.github.io"/>
     <link rel="self" href="https://InMapleWoods.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://InMapleWoods.github.io/images/avatar.png</logo>
     <icon>https://InMapleWoods.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 林中风吟</rights>
+    <entry>
+        <title type="html"><![CDATA[CSS 随笔1]]></title>
+        <id>https://InMapleWoods.github.io/post/css-sui-bi-1/</id>
+        <link href="https://InMapleWoods.github.io/post/css-sui-bi-1/">
+        </link>
+        <updated>2020-03-31T15:53:08.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="css随笔">CSS随笔</h1>
+<p>为了写出一个CSS3做登录界面TAB切换效果，学了点新知识。</p>
+<hr>
+<h2 id="css选择器">CSS选择器</h2>
+<ul>
+<li>后代选择器——直接空格：所有后代元素（儿子、孙子）；</li>
+<li>子元素选择器——<code>&gt;</code>：直接后代（儿子）；</li>
+<li>相邻兄弟选择器——<code>+</code>：选择紧连着另一元素后的元素，二者具有相同的父元素。只会选择的一个相邻的匹配元素；</li>
+<li>后续兄弟选择器——<code>~</code>：选取所有指定元素之后的相邻兄弟元素。</li>
+</ul>
+<p>相邻兄弟元素选择器 只是选择紧跟着的兄弟元素，<br>
+后续元素选择器  选择所有符合条件的兄弟元素。</p>
+<h2 id="css伪类">CSS伪类</h2>
+<p>这次只用了checked伪类，主要响应radio。</p>
+<h2 id="label的for">label的for</h2>
+<p>label 的 for 属性是绑定表单元素用的，但这次是为了在点击 label 时同时改变 radio 的 checked 状态。将</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[git使用]]></title>
         <id>https://InMapleWoods.github.io/post/git-shi-yong/</id>

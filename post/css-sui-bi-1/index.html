@@ -2,28 +2,23 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>爬取成绩及考试信息推送给自己 | 林中风吟</title>
+<title>CSS 随笔1 | 林中风吟</title>
 <link rel="shortcut icon" href="https://InMapleWoods.github.io/favicon.ico?v=1585671018511">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://InMapleWoods.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="爬取成绩及考试信息推送给自己 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="CSS 随笔1 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="爬取成绩及考试信息推送给自己
+    <meta name="description" content="CSS随笔
+为了写出一个CSS3做登录界面TAB切换效果，学了点新知识。
 
-正则表达式的使用
-C#正则表达式使用
+CSS选择器
 
-邮件发送
-C#邮件发送
-
-使用Cookies模拟登陆用户操作
-Header中的Set-Cookies和Cookies
-
-定时触发器
-定时触发，与当前信息对比，根据结果发..." />
+后代选择器——直接空格：所有后代元素（儿子、孙子）；
+子元素选择器——&gt;：直接后代（儿子）；
+相邻兄弟选择器——+：选择紧连着另一元素后的元素..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -86,11 +81,11 @@ Header中的Set-Cookies和Cookies
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              爬取成绩及考试信息推送给自己
+              CSS 随笔1
             </h2>
             <div class="post-info">
               <span>
-                2019-12-29
+                2020-03-31
               </span>
               <span>
                 1 min read
@@ -100,29 +95,31 @@ Header中的Set-Cookies和Cookies
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="爬取成绩及考试信息推送给自己">爬取成绩及考试信息推送给自己</h1>
+                <h1 id="css随笔">CSS随笔</h1>
+<p>为了写出一个CSS3做登录界面TAB切换效果，学了点新知识。</p>
 <hr>
-<h2 id="正则表达式的使用">正则表达式的使用</h2>
-<p>C#正则表达式使用</p>
-<hr>
-<h2 id="邮件发送">邮件发送</h2>
-<p>C#邮件发送</p>
-<hr>
-<h2 id="使用cookies模拟登陆用户操作">使用Cookies模拟登陆用户操作</h2>
-<p>Header中的Set-Cookies和Cookies</p>
-<hr>
-<h2 id="定时触发器">定时触发器</h2>
-<p>定时触发，与当前信息对比，根据结果发送邮件至通知邮箱</p>
+<h2 id="css选择器">CSS选择器</h2>
+<ul>
+<li>后代选择器——直接空格：所有后代元素（儿子、孙子）；</li>
+<li>子元素选择器——<code>&gt;</code>：直接后代（儿子）；</li>
+<li>相邻兄弟选择器——<code>+</code>：选择紧连着另一元素后的元素，二者具有相同的父元素。只会选择的一个相邻的匹配元素；</li>
+<li>后续兄弟选择器——<code>~</code>：选取所有指定元素之后的相邻兄弟元素。</li>
+</ul>
+<p>相邻兄弟元素选择器 只是选择紧跟着的兄弟元素，<br>
+后续元素选择器  选择所有符合条件的兄弟元素。</p>
+<h2 id="css伪类">CSS伪类</h2>
+<p>这次只用了checked伪类，主要响应radio。</p>
+<h2 id="label的for">label的for</h2>
+<p>label 的 for 属性是绑定表单元素用的，但这次是为了在点击 label 时同时改变 radio 的 checked 状态。将</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#%E7%88%AC%E5%8F%96%E6%88%90%E7%BB%A9%E5%8F%8A%E8%80%83%E8%AF%95%E4%BF%A1%E6%81%AF%E6%8E%A8%E9%80%81%E7%BB%99%E8%87%AA%E5%B7%B1">爬取成绩及考试信息推送给自己</a>
+<li><a href="#css%E9%9A%8F%E7%AC%94">CSS随笔</a>
 <ul>
-<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8">正则表达式的使用</a></li>
-<li><a href="#%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81">邮件发送</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C">使用Cookies模拟登陆用户操作</a></li>
-<li><a href="#%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8">定时触发器</a></li>
+<li><a href="#css%E9%80%89%E6%8B%A9%E5%99%A8">CSS选择器</a></li>
+<li><a href="#css%E4%BC%AA%E7%B1%BB">CSS伪类</a></li>
+<li><a href="#label%E7%9A%84for">label的for</a></li>
 </ul>
 </li>
 </ul>
@@ -132,6 +129,15 @@ Header中的Set-Cookies和Cookies
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://InMapleWoods.github.io/post/git-shi-yong/">
+              <h3 class="post-title">
+                git使用
+              </h3>
+            </a>
+          </div>
         
 
         
