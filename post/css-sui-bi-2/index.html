@@ -2,24 +2,23 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>一个简单的P2P语音通信程序 | 林中风吟</title>
+<title>CSS 随笔2 | 林中风吟</title>
 <link rel="shortcut icon" href="https://InMapleWoods.github.io/favicon.ico?v=1585728827026">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://InMapleWoods.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="一个简单的P2P语音通信程序 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="CSS 随笔2 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="一个简单的P2P语音通信程序
+    <meta name="description" content="CSS随笔2
+接上篇。
 
-NAPT的概念及锥型（Cone）NAT内网穿透
-
-
-NAPT：不仅改变IP地址，还改变发送端口。
-
-
-锥形NAT：存在会话则维护内网IP/Port与外网IP/Port的映射关系，且同一组内网IP/Port与不..." />
+CSS过渡
+通过transition设置过渡时间。利用选择器造成样式变化，形成渐变效果。
+.login_register {
+  transition: height 1s;
+  -moz-transition: ..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -82,74 +81,46 @@ NAPT：不仅改变IP地址，还改变发送端口。
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              一个简单的P2P语音通信程序
+              CSS 随笔2
             </h2>
             <div class="post-info">
               <span>
-                2020-02-22
+                2020-04-01
               </span>
               <span>
-                3 min read
+                1 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="一个简单的p2p语音通信程序">一个简单的P2P语音通信程序</h1>
+                <h1 id="css随笔2">CSS随笔2</h1>
+<p>接上篇。</p>
 <hr>
-<h2 id="napt的概念及锥型conenat内网穿透">NAPT的概念及锥型（Cone）NAT内网穿透</h2>
-<ul>
-<li>
-<p>NAPT：不仅改变IP地址，还改变发送端口。</p>
-</li>
-<li>
-<p>锥形NAT：存在会话则维护内网IP/Port与外网IP/Port的映射关系，且同一组内网IP/Port与不同外网主机通讯使用同一组IP/Port，不重新分配</p>
-</li>
-</ul>
+<h2 id="css过渡">CSS过渡</h2>
+<p>通过transition设置过渡时间。利用选择器造成样式变化，形成渐变效果。</p>
+<pre><code class="language-css">.login_register {
+  transition: height 1s;
+  -moz-transition: height 1s;
+  /* Firefox 4 */
+  -webkit-transition: height 1s;
+  /* Safari and Chrome */
+  -o-transition: height 1s;
+  /* Opera */
+}
+</code></pre>
 <hr>
-<h2 id="p2p的概念">P2P的概念</h2>
-<p>Peer To Peer，端到端的对等网络，每一个既是Server也是Client。</p>
-<hr>
-<h2 id="语音通信实现方法">语音通信实现方法</h2>
-<ul>
-<li>A和B的地址都是内网地址，且在不同的NAT后面</li>
-<li>需要一台服务器做中转</li>
-<li>若由A发起双方的语音通讯</li>
-</ul>
-<ol>
-<li>
-<p>A和B向服务器注册，服务器保存A,B的<strong>公网IP/Port</strong>。（发送端口，接收端口，播放端口，录制端口）</p>
-</li>
-<li>
-<p>A准备发送数据，A<strong>发送端口</strong>向服务器发送<strong>中继请求</strong>，服务器接收请求后向B发送请求。</p>
-</li>
-<li>
-<p>B的<strong>接收端口</strong>发送接收到请求后，B<strong>播放端口</strong>向A的<strong>录制端口</strong>公网IP/Port发送信息,<strong>这就是在B处打洞</strong>。同时B的<strong>发送端口</strong>向服务器发送信息，表明洞已开，同时让A准备接收B的声音信息。</p>
-</li>
-<li>
-<p>服务器接收信息，发送请求，A<strong>接收端口</strong>收到信息后，A的<strong>录制端口</strong>向B的<strong>播放端口</strong>公网IP/Port发送信息，同时A的<strong>播放端口</strong>向B的<strong>录制端口</strong>公网IP/Port发送信息，<strong>这是在A处打洞</strong>。A的<strong>发送端口</strong>向服务器发送信息，表明洞已开，同时让B准备接收A的声音信息。</p>
-</li>
-<li>
-<p>服务器接收信息，发送请求，B<strong>接收端口</strong>收到信息后，B的<strong>录制端口</strong>向A的<strong>播放端口</strong>公网IP/Port发送信息。</p>
-</li>
-<li>
-<p>至此A，B<strong>双方</strong>都能接收到对方的语音信息，两者的连接会话已建立。</p>
-</li>
-</ol>
-<hr>
-<p>简而言之，发送端口和接收端口用来与服务器通讯，发送和接收控制指令。录制端口和播放端口用于发送和接收语音数据。</p>
-<hr>
-<p>为了保持会话，服务器定期向主机发送数据包，以防主机内网IP/Port的映射消失。俗称<strong>心跳包</strong>。</p>
+<h2 id="css媒体查询">CSS媒体查询</h2>
+<p>用来做响应式布局。</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84p2p%E8%AF%AD%E9%9F%B3%E9%80%9A%E4%BF%A1%E7%A8%8B%E5%BA%8F">一个简单的P2P语音通信程序</a>
+<li><a href="#css%E9%9A%8F%E7%AC%942">CSS随笔2</a>
 <ul>
-<li><a href="#napt%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E9%94%A5%E5%9E%8Bconenat%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F">NAPT的概念及锥型（Cone）NAT内网穿透</a></li>
-<li><a href="#p2p%E7%9A%84%E6%A6%82%E5%BF%B5">P2P的概念</a></li>
-<li><a href="#%E8%AF%AD%E9%9F%B3%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">语音通信实现方法</a></li>
+<li><a href="#css%E8%BF%87%E6%B8%A1">CSS过渡</a></li>
+<li><a href="#css%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2">CSS媒体查询</a></li>
 </ul>
 </li>
 </ul>
@@ -162,9 +133,9 @@ NAPT：不仅改变IP地址，还改变发送端口。
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://InMapleWoods.github.io/post/pa-qu-cheng-ji-ji-kao-shi-xin-xi-tui-song-gei-zi-ji/">
+            <a href="https://InMapleWoods.github.io/post/css-sui-bi-1/">
               <h3 class="post-title">
-                爬取成绩及考试信息推送给自己
+                CSS 随笔1
               </h3>
             </a>
           </div>
