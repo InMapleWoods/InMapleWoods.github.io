@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://InMapleWoods.github.io</id>
     <title>林中风吟</title>
-    <updated>2020-04-02T09:26:59.852Z</updated>
+    <updated>2020-05-15T16:24:10.687Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://InMapleWoods.github.io"/>
     <link rel="self" href="https://InMapleWoods.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://InMapleWoods.github.io/images/avatar.png</logo>
     <icon>https://InMapleWoods.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 林中风吟</rights>
+    <entry>
+        <title type="html"><![CDATA[git使用2]]></title>
+        <id>https://InMapleWoods.github.io/post/git-shi-yong-2/</id>
+        <link href="https://InMapleWoods.github.io/post/git-shi-yong-2/">
+        </link>
+        <updated>2020-05-15T16:18:58.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="git使用2">git使用2</h1>
+<hr>
+<h2 id="介绍">介绍</h2>
+<p>在自己服务器上部署远程库</p>
+<hr>
+<h2 id="内容">内容</h2>
+<ol>
+<li>
+<p>git init --bare {repoName}.git ——在服务器当前位置创建远程库</p>
+</li>
+<li>
+<p>git remote add origin {userName}@{IPAddress}:{Address}/{repoName}.git ——将本地库关联到远程库中</p>
+</li>
+<li>
+<p>git push -u origin master ——提交并同步两个库</p>
+</li>
+<li>
+<p>git remote remove {remoteBranchName}  ——删除远程分支</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CSS 随笔3]]></title>
         <id>https://InMapleWoods.github.io/post/css-sui-bi-3/</id>

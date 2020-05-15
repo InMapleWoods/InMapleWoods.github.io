@@ -2,25 +2,28 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CSS 随笔3 | 林中风吟</title>
+<title>git使用2 | 林中风吟</title>
 <link rel="shortcut icon" href="https://InMapleWoods.github.io/favicon.ico?v=1589559846399">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://InMapleWoods.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="CSS 随笔3 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="git使用2 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="CSS随笔3
-接上文
+    <meta name="description" content="git使用2
 
-CSS动画
-利用@keyframes创建动画，from 和 to来代表始、终状态（0%，100%）
-利用 infinity无限循环播放
-居中效果
-利用transform来实现水平垂直居中效果
-transform: t..." />
-    <meta name="keywords" content="CSS" />
+介绍
+在自己服务器上部署远程库
+
+内容
+
+
+git init --bare {repoName}.git ——在服务器当前位置创建远程库
+
+
+git remote add origin {userName}@{IPAddre..." />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -82,43 +85,48 @@ transform: t..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              CSS 随笔3
+              git使用2
             </h2>
             <div class="post-info">
               <span>
-                2020-04-02
+                2020-05-16
               </span>
               <span>
                 1 min read
               </span>
               
-                <a href="https://InMapleWoods.github.io/tag/j1LYXQdVN/" class="post-tag">
-                  # CSS
-                </a>
-              
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="css随笔3">CSS随笔3</h1>
-<p>接上文</p>
+                <h1 id="git使用2">git使用2</h1>
 <hr>
-<h2 id="css动画">CSS动画</h2>
-<p>利用<code>@keyframes</code>创建动画，<code>from</code> 和 <code>to</code>来代表始、终状态（0%，100%）<br>
-利用 <code>infinity</code>无限循环播放</p>
-<h2 id="居中效果">居中效果</h2>
-<p>利用<code>transform</code>来实现水平垂直居中效果<br>
-<code>transform: translate(-50%, -50%);</code><br>
-元素以自身的左上角为原点，往上往左分别移动自身长宽的50%，以使其居于中心位置。<br>
-与负的margin-left和margin-top实现居中不同，margin-left和margin-top必须知道自身的宽高，而translate可以在不知道宽高的情况下进行居中。</p>
+<h2 id="介绍">介绍</h2>
+<p>在自己服务器上部署远程库</p>
+<hr>
+<h2 id="内容">内容</h2>
+<ol>
+<li>
+<p>git init --bare {repoName}.git ——在服务器当前位置创建远程库</p>
+</li>
+<li>
+<p>git remote add origin {userName}@{IPAddress}:{Address}/{repoName}.git ——将本地库关联到远程库中</p>
+</li>
+<li>
+<p>git push -u origin master ——提交并同步两个库</p>
+</li>
+<li>
+<p>git remote remove {remoteBranchName}  ——删除远程分支</p>
+</li>
+</ol>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#css%E9%9A%8F%E7%AC%943">CSS随笔3</a>
+<li><a href="#git%E4%BD%BF%E7%94%A82">git使用2</a>
 <ul>
-<li><a href="#css%E5%8A%A8%E7%94%BB">CSS动画</a></li>
-<li><a href="#%E5%B1%85%E4%B8%AD%E6%95%88%E6%9E%9C">居中效果</a></li>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E5%86%85%E5%AE%B9">内容</a></li>
 </ul>
 </li>
 </ul>
@@ -131,9 +139,9 @@ transform: t..." />
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://InMapleWoods.github.io/post/css-sui-bi-2/">
+            <a href="https://InMapleWoods.github.io/post/css-sui-bi-3/">
               <h3 class="post-title">
-                CSS 随笔2
+                CSS 随笔3
               </h3>
             </a>
           </div>
