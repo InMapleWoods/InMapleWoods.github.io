@@ -1,0 +1,284 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Andriod学习——教务信息获取（一） | 林中风吟</title>
+<link rel="shortcut icon" href="https://InMapleWoods.github.io/favicon.ico?v=1589975771863">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://InMapleWoods.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Andriod学习——教务信息获取（一） | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Andriod学习1
+
+背景
+做一个教务处信息获取的手机APP，本质上是一个运行在手机上的爬虫。
+
+相关部件
+登陆页面LoginActivity
+主页面MainActivity
+窗口小部件NewAppWidget
+
+登陆页面
+登陆页面主要是..." />
+    <meta name="keywords" content="Android,爬虫,实践" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://InMapleWoods.github.io">
+  <img class="avatar" src="https://InMapleWoods.github.io/images/avatar.png?v=1589975771863" alt="">
+  </a>
+  <h1 class="site-title">
+    林中风吟
+  </h1>
+  <p class="site-description">
+    随手笔记，偶有所得
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Andriod学习——教务信息获取（一）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://InMapleWoods.github.io/tag/ZoMuS4Dtz/" class="post-tag">
+                  # Android
+                </a>
+              
+                <a href="https://InMapleWoods.github.io/tag/VgYL0zszd/" class="post-tag">
+                  # 爬虫
+                </a>
+              
+                <a href="https://InMapleWoods.github.io/tag/o204idFSwa/" class="post-tag">
+                  # 实践
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="andriod学习1">Andriod学习1</h1>
+<hr>
+<h2 id="背景">背景</h2>
+<p>做一个教务处信息获取的手机APP，本质上是一个运行在手机上的爬虫。</p>
+<hr>
+<h2 id="相关部件">相关部件</h2>
+<p>登陆页面<code>LoginActivity</code><br>
+主页面<code>MainActivity</code><br>
+窗口小部件<code>NewAppWidget</code></p>
+<hr>
+<h2 id="登陆页面">登陆页面</h2>
+<p>登陆页面主要是为了保存登陆教务系统所需的账号密码。在用户输入账号密码，点击保存后，将账号密码信息保存在本地文件中，以此实现免登陆。</p>
+<h3 id="androidmanifestxml的相关修改"><code>AndroidManifest.xml</code>的相关修改</h3>
+<p>为了获取存储权限，首先需要修改<code>AndroidManifest.xml</code>，需要在<application>的同级处，添加</p>
+<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+</code></pre>
+<p>作为启动Activity，需要在<code>&lt;activity&gt;</code>标签内添加</p>
+<pre><code class="language-xml">&lt;intent-filter&gt;
+    &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+    &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+&lt;/intent-filter&gt;
+</code></pre>
+<h3 id="loginactivityjava的相关修改"><code>LoginActivity.java</code>的相关修改</h3>
+<p>在<code>LoginActivity.java</code>中，定义全局变量，保存所请求权限的字符串数组和请求状态码。</p>
+<pre><code class="language-java">private static String[] PERMISSIONS_STORAGE = {
+    Manifest.permission.READ_EXTERNAL_STORAGE,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//请求状态码
+private static int REQUEST_PERMISSION_CODE = 1;
+</code></pre>
+<p>在 <code>onCreate</code>方法中，请求权限。</p>
+<pre><code class="language-java">if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+    ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE);
+}
+</code></pre>
+<h3 id="文件存储相关事宜">文件存储相关事宜</h3>
+<p>值得注意的是，在Andriod Q（Android 10）中，也就是Android SDK的版本大于29的情况下，存储功能的API调用和之前的版本有所不同。所以，在代码中，如果要获取当前程序的地址，需要对版本加以判断，通过版本不同选择API。</p>
+<pre><code class="language-java">/**
+* 上下文
+*/
+private Context _context;
+
+/**
+* 构造函数
+* @param context 上下文
+*/
+public FileTools(Context context){
+    _context=context;
+}
+
+/**
+* 获取环境存储根地址
+* @return 根地址
+*/
+private String GetPath(){
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.Q) {
+return _context.getExternalFilesDir(null).getAbsolutePath();
+    }
+    else{
+return Environment.getExternalStorageDirectory().getAbsolutePath();
+    }
+}
+</code></pre>
+<hr>
+<h2 id="主页面">主页面</h2>
+<p>在主页面中，用户通过点击<code>切换</code>按钮来实现切换教务通知、考试通知、考试成绩三个部分的显示切换。同时，用户可以点击<code>删除配置</code>按钮来实现对错误账号密码的删除。</p>
+<h3 id="mainactivityjava的相关修改"><code>MainActivity.java</code>的相关修改</h3>
+<p>通过修改<code>MainActivity.java</code>中的代码，来实现功能。</p>
+<pre><code class="language-java">Button switchBtn = (Button) findViewById(R.id.switchBtn);//获取事件源
+switchBtn.setOnClickListener(new switchButton());//将事件源与相应的相应绑定
+
+class switchButton implements View.OnClickListener {
+    public void onClick(View view) {
+        /*点击事件代码*/
+    }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#andriod%E5%AD%A6%E4%B9%A01">Andriod学习1</a>
+<ul>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E9%83%A8%E4%BB%B6">相关部件</a></li>
+<li><a href="#%E7%99%BB%E9%99%86%E9%A1%B5%E9%9D%A2">登陆页面</a>
+<ul>
+<li><a href="#androidmanifestxml%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BF%AE%E6%94%B9"><code>AndroidManifest.xml</code>的相关修改</a></li>
+<li><a href="#loginactivityjava%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BF%AE%E6%94%B9"><code>LoginActivity.java</code>的相关修改</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%9B%B8%E5%85%B3%E4%BA%8B%E5%AE%9C">文件存储相关事宜</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BB%E9%A1%B5%E9%9D%A2">主页面</a>
+<ul>
+<li><a href="#mainactivityjava%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BF%AE%E6%94%B9"><code>MainActivity.java</code>的相关修改</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://InMapleWoods.github.io/post/ubuntu-huan-jing-zhong-de-ssl-cuo-wu/">
+              <h3 class="post-title">
+                Ubuntu环境中的SSL错误
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://InMapleWoods.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

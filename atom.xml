@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://InMapleWoods.github.io</id>
     <title>林中风吟</title>
-    <updated>2020-05-15T16:24:10.687Z</updated>
+    <updated>2020-05-20T11:56:27.269Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://InMapleWoods.github.io"/>
     <link rel="self" href="https://InMapleWoods.github.io/atom.xml"/>
@@ -10,6 +10,192 @@
     <logo>https://InMapleWoods.github.io/images/avatar.png</logo>
     <icon>https://InMapleWoods.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 林中风吟</rights>
+    <entry>
+        <title type="html"><![CDATA[Andriod学习——教务信息获取（一）]]></title>
+        <id>https://InMapleWoods.github.io/post/andriod-xue-xi-jiao-wu-xin-xi-huo-qu-yi/</id>
+        <link href="https://InMapleWoods.github.io/post/andriod-xue-xi-jiao-wu-xin-xi-huo-qu-yi/">
+        </link>
+        <updated>2020-05-20T11:11:30.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="andriod学习1">Andriod学习1</h1>
+<hr>
+<h2 id="背景">背景</h2>
+<p>做一个教务处信息获取的手机APP，本质上是一个运行在手机上的爬虫。</p>
+<hr>
+<h2 id="相关部件">相关部件</h2>
+<p>登陆页面<code>LoginActivity</code><br>
+主页面<code>MainActivity</code><br>
+窗口小部件<code>NewAppWidget</code></p>
+<hr>
+<h2 id="登陆页面">登陆页面</h2>
+<p>登陆页面主要是为了保存登陆教务系统所需的账号密码。在用户输入账号密码，点击保存后，将账号密码信息保存在本地文件中，以此实现免登陆。</p>
+<h3 id="androidmanifestxml的相关修改"><code>AndroidManifest.xml</code>的相关修改</h3>
+<p>为了获取存储权限，首先需要修改<code>AndroidManifest.xml</code>，需要在<application>的同级处，添加</p>
+<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+</code></pre>
+<p>作为启动Activity，需要在<code>&lt;activity&gt;</code>标签内添加</p>
+<pre><code class="language-xml">&lt;intent-filter&gt;
+    &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+    &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+&lt;/intent-filter&gt;
+</code></pre>
+<h3 id="loginactivityjava的相关修改"><code>LoginActivity.java</code>的相关修改</h3>
+<p>在<code>LoginActivity.java</code>中，定义全局变量，保存所请求权限的字符串数组和请求状态码。</p>
+<pre><code class="language-java">private static String[] PERMISSIONS_STORAGE = {
+    Manifest.permission.READ_EXTERNAL_STORAGE,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//请求状态码
+private static int REQUEST_PERMISSION_CODE = 1;
+</code></pre>
+<p>在 <code>onCreate</code>方法中，请求权限。</p>
+<pre><code class="language-java">if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+    ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE);
+}
+</code></pre>
+<h3 id="文件存储相关事宜">文件存储相关事宜</h3>
+<p>值得注意的是，在Andriod Q（Android 10）中，也就是Android SDK的版本大于29的情况下，存储功能的API调用和之前的版本有所不同。所以，在代码中，如果要获取当前程序的地址，需要对版本加以判断，通过版本不同选择API。</p>
+<pre><code class="language-java">/**
+* 上下文
+*/
+private Context _context;
+
+/**
+* 构造函数
+* @param context 上下文
+*/
+public FileTools(Context context){
+    _context=context;
+}
+
+/**
+* 获取环境存储根地址
+* @return 根地址
+*/
+private String GetPath(){
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.Q) {
+return _context.getExternalFilesDir(null).getAbsolutePath();
+    }
+    else{
+return Environment.getExternalStorageDirectory().getAbsolutePath();
+    }
+}
+</code></pre>
+<hr>
+<h2 id="主页面">主页面</h2>
+<p>在主页面中，用户通过点击<code>切换</code>按钮来实现切换教务通知、考试通知、考试成绩三个部分的显示切换。同时，用户可以点击<code>删除配置</code>按钮来实现对错误账号密码的删除。</p>
+<h3 id="mainactivityjava的相关修改"><code>MainActivity.java</code>的相关修改</h3>
+<p>通过修改<code>MainActivity.java</code>中的代码，来实现功能。</p>
+<pre><code class="language-java">Button switchBtn = (Button) findViewById(R.id.switchBtn);//获取事件源
+switchBtn.setOnClickListener(new switchButton());//将事件源与相应的相应绑定
+
+class switchButton implements View.OnClickListener {
+    public void onClick(View view) {
+        /*点击事件代码*/
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ubuntu环境中的SSL错误]]></title>
+        <id>https://InMapleWoods.github.io/post/ubuntu-huan-jing-zhong-de-ssl-cuo-wu/</id>
+        <link href="https://InMapleWoods.github.io/post/ubuntu-huan-jing-zhong-de-ssl-cuo-wu/">
+        </link>
+        <updated>2020-05-20T09:11:48.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="ubuntu环境中的ssl错误">Ubuntu环境中的SSL错误</h1>
+<hr>
+<h2 id="错误背景">错误背景</h2>
+<p>为了实现一个爬虫接口，将写好的Web Api项目部署在腾讯云的Ubuntu服务器，在调试过程中发现无法正常执行该项目。</p>
+<hr>
+<h2 id="环境">环境</h2>
+<p>Ubuntu 18.04.4 LTS + .Net Core 3.1.202 + OpenSSL 1.1.1g</p>
+<hr>
+<h2 id="报错">报错</h2>
+<p>OpenSslCryptographicException: error:141A318A:SSL routines:tls_process_ske_dhe:dh key too small</p>
+<hr>
+<h2 id="分析">分析</h2>
+<p>根据报错分析，dh key too small是报错的主要原因。经过查找，发现是爬虫访问的网站虽然采用HTTPS协议，但证书的加密等级不够，所以导致了程序执行报错。在Windows环境下使用Chrome访问该网站同样出现了不安全的提示。</p>
+<p>如图：<br>
+<img src="https://InMapleWoods.github.io/post-images/1589967220163.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JAVA 爬虫学习]]></title>
+        <id>https://InMapleWoods.github.io/post/java-pa-chong-xue-xi/</id>
+        <link href="https://InMapleWoods.github.io/post/java-pa-chong-xue-xi/">
+        </link>
+        <updated>2020-05-20T08:41:52.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="java爬虫学习">JAVA爬虫学习</h1>
+<hr>
+<h2 id="正则表达式的使用">正则表达式的使用</h2>
+<p>JAVA正则表达式使用</p>
+<pre><code class="language-java">String patternStr = &quot;(.*)&quot;;
+Pattern r = Pattern.compile(patternStr);
+Matcher m = r.matcher(httpText); // 创建 matcher 对象
+List&lt;String&gt; temp = new ArrayList&lt;String&gt;();
+while (m.find()) {
+    temp.add(m.group(1));// 获取第一个匹配的部分（第一个括号部分）
+}
+</code></pre>
+<hr>
+<h2 id="httpurlconnection-使用">HttpURLConnection 使用</h2>
+<pre><code class="language-java">URL url = new URL(&quot;&quot;);// 由字符串创建URL对象
+HttpURLConnection connection = (HttpURLConnection) url.openConnection();// 通过URL创建HttpURLConnection对象
+// 设置连接方法（GET,POST,HEAD,PUT,DELETE,OPTIONS,TRACE,CONNECT)
+connection.setRequestMethod(&quot;POST&quot;);
+// 设置Content-Type
+connection.setRequestProperty(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);// html网页中的表单form形式
+connection.setRequestProperty(&quot;Accept&quot;, &quot;*/*&quot;);// Request的Accept属性，用于判断接收何种类型的值
+connection.setRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3941.4 Safari/537.36&quot;);// Request的User-Agent属性，用于判断是什么设备发出的请求
+connection.setRequestProperty(&quot;Connection&quot;, &quot;Keep-Alive&quot;);// 维持长连接
+// 设置是否向httpUrlConnection输出，post请求设置为true，默认是false
+connection.setDoOutput(true);
+// 设置是否向httpUrlConnection输入
+connection.setDoInput(true);
+// 设置是否使用缓存
+connection.setUseCaches(false);
+// 设置是否重定向
+HttpURLConnection.setFollowRedirects(true);
+// 设置请求字符集
+connection.setRequestProperty(&quot;Charset&quot;, &quot;UTF-8&quot;);
+byte[] postdatabyte = postData.getBytes(StandardCharsets.UTF_8);
+connection.setRequestProperty(&quot;Content-Length&quot;, String.valueOf(postdatabyte.length));//设置请求内容长度
+// 设置RequestBody
+DataOutputStream stream = new DataOutputStream(connection.getOutputStream());// 获取数据流
+stream.writeBytes(postData);// 写入数据进流
+stream.flush();// 更新流
+int statusCode = connection.getResponseCode();// 获取返回值状态码
+String locationUrl = connection.getHeaderField(&quot;Location&quot;));// 获取重定向目标地址
+InputStream inputStream;
+if (statusCode &gt;= 200 &amp;&amp; statusCode &lt; 300) {// 若状态码正常
+    inputStream = connection.getInputStream();// 返回正常Response流
+} else {
+    inputStream = connection.getErrorStream();// 返回报错流
+}
+if (inputStream != null) {
+    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+    StringBuilder sb = new StringBuilder();
+    String line;
+    while ((line = br.readLine()) != null) {
+        sb.append(line);
+    }
+    return sb.toString();// 返回Response内容
+}
+</code></pre>
+<hr>
+<h2 id="使用cookies模拟登陆用户操作">使用Cookies模拟登陆用户操作</h2>
+<p>通过<code>CookieManager</code>保存全局的Cookies，来实现登录操作的模拟。</p>
+<pre><code class="language-java">CookieManager manager = new CookieManager();
+// 保存这个定制的CookieManager
+CookieHandler.setDefault(manager);
+</code></pre>
+<hr>
+<h2 id="post数据的处理">POST数据的处理</h2>
+<p>在HTML表单发送POST提交的时候，数据被自动编码，如<code>%</code>被编码为<code>%25</code>。<br>
+模拟提交的同时，也要进行编码。</p>
+<pre><code class="language-java">String encoded = URLEncoder.encode(encoded.toString(), &quot;UTF-8&quot;);
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[git使用2]]></title>
         <id>https://InMapleWoods.github.io/post/git-shi-yong-2/</id>

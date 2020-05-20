@@ -1,0 +1,262 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JAVA 爬虫学习 | 林中风吟</title>
+<link rel="shortcut icon" href="https://InMapleWoods.github.io/favicon.ico?v=1589975771863">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://InMapleWoods.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JAVA 爬虫学习 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="JAVA爬虫学习
+
+正则表达式的使用
+JAVA正则表达式使用
+String patternStr = &quot;(.*)&quot;;
+Pattern r = Pattern.compile(patternStr);
+Matcher m ..." />
+    <meta name="keywords" content="JAVA,爬虫,实践" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://InMapleWoods.github.io">
+  <img class="avatar" src="https://InMapleWoods.github.io/images/avatar.png?v=1589975771863" alt="">
+  </a>
+  <h1 class="site-title">
+    林中风吟
+  </h1>
+  <p class="site-description">
+    随手笔记，偶有所得
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              JAVA 爬虫学习
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://InMapleWoods.github.io/tag/kMMLi5SwZ/" class="post-tag">
+                  # JAVA
+                </a>
+              
+                <a href="https://InMapleWoods.github.io/tag/VgYL0zszd/" class="post-tag">
+                  # 爬虫
+                </a>
+              
+                <a href="https://InMapleWoods.github.io/tag/o204idFSwa/" class="post-tag">
+                  # 实践
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="java爬虫学习">JAVA爬虫学习</h1>
+<hr>
+<h2 id="正则表达式的使用">正则表达式的使用</h2>
+<p>JAVA正则表达式使用</p>
+<pre><code class="language-java">String patternStr = &quot;(.*)&quot;;
+Pattern r = Pattern.compile(patternStr);
+Matcher m = r.matcher(httpText); // 创建 matcher 对象
+List&lt;String&gt; temp = new ArrayList&lt;String&gt;();
+while (m.find()) {
+    temp.add(m.group(1));// 获取第一个匹配的部分（第一个括号部分）
+}
+</code></pre>
+<hr>
+<h2 id="httpurlconnection-使用">HttpURLConnection 使用</h2>
+<pre><code class="language-java">URL url = new URL(&quot;&quot;);// 由字符串创建URL对象
+HttpURLConnection connection = (HttpURLConnection) url.openConnection();// 通过URL创建HttpURLConnection对象
+// 设置连接方法（GET,POST,HEAD,PUT,DELETE,OPTIONS,TRACE,CONNECT)
+connection.setRequestMethod(&quot;POST&quot;);
+// 设置Content-Type
+connection.setRequestProperty(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);// html网页中的表单form形式
+connection.setRequestProperty(&quot;Accept&quot;, &quot;*/*&quot;);// Request的Accept属性，用于判断接收何种类型的值
+connection.setRequestProperty(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3941.4 Safari/537.36&quot;);// Request的User-Agent属性，用于判断是什么设备发出的请求
+connection.setRequestProperty(&quot;Connection&quot;, &quot;Keep-Alive&quot;);// 维持长连接
+// 设置是否向httpUrlConnection输出，post请求设置为true，默认是false
+connection.setDoOutput(true);
+// 设置是否向httpUrlConnection输入
+connection.setDoInput(true);
+// 设置是否使用缓存
+connection.setUseCaches(false);
+// 设置是否重定向
+HttpURLConnection.setFollowRedirects(true);
+// 设置请求字符集
+connection.setRequestProperty(&quot;Charset&quot;, &quot;UTF-8&quot;);
+byte[] postdatabyte = postData.getBytes(StandardCharsets.UTF_8);
+connection.setRequestProperty(&quot;Content-Length&quot;, String.valueOf(postdatabyte.length));//设置请求内容长度
+// 设置RequestBody
+DataOutputStream stream = new DataOutputStream(connection.getOutputStream());// 获取数据流
+stream.writeBytes(postData);// 写入数据进流
+stream.flush();// 更新流
+int statusCode = connection.getResponseCode();// 获取返回值状态码
+String locationUrl = connection.getHeaderField(&quot;Location&quot;));// 获取重定向目标地址
+InputStream inputStream;
+if (statusCode &gt;= 200 &amp;&amp; statusCode &lt; 300) {// 若状态码正常
+    inputStream = connection.getInputStream();// 返回正常Response流
+} else {
+    inputStream = connection.getErrorStream();// 返回报错流
+}
+if (inputStream != null) {
+    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+    StringBuilder sb = new StringBuilder();
+    String line;
+    while ((line = br.readLine()) != null) {
+        sb.append(line);
+    }
+    return sb.toString();// 返回Response内容
+}
+</code></pre>
+<hr>
+<h2 id="使用cookies模拟登陆用户操作">使用Cookies模拟登陆用户操作</h2>
+<p>通过<code>CookieManager</code>保存全局的Cookies，来实现登录操作的模拟。</p>
+<pre><code class="language-java">CookieManager manager = new CookieManager();
+// 保存这个定制的CookieManager
+CookieHandler.setDefault(manager);
+</code></pre>
+<hr>
+<h2 id="post数据的处理">POST数据的处理</h2>
+<p>在HTML表单发送POST提交的时候，数据被自动编码，如<code>%</code>被编码为<code>%25</code>。<br>
+模拟提交的同时，也要进行编码。</p>
+<pre><code class="language-java">String encoded = URLEncoder.encode(encoded.toString(), &quot;UTF-8&quot;);
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#java%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0">JAVA爬虫学习</a>
+<ul>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8">正则表达式的使用</a></li>
+<li><a href="#httpurlconnection-%E4%BD%BF%E7%94%A8">HttpURLConnection 使用</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C">使用Cookies模拟登陆用户操作</a></li>
+<li><a href="#post%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%84%E7%90%86">POST数据的处理</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://InMapleWoods.github.io/post/git-shi-yong-2/">
+              <h3 class="post-title">
+                git使用2
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://InMapleWoods.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
