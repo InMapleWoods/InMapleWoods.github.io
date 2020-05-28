@@ -2,29 +2,24 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>爬取成绩及考试信息推送给自己 | 林中风吟</title>
+<title>使用PowerShell创建硬链接和软链接 | 林中风吟</title>
 <link rel="shortcut icon" href="https://InMapleWoods.github.io/favicon.ico?v=1590666639748">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://InMapleWoods.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="爬取成绩及考试信息推送给自己 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="使用PowerShell创建硬链接和软链接 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="爬取成绩及考试信息推送给自己
+    <meta name="description" content="使用PowerShell创建硬链接和软链接
 
-正则表达式的使用
-C#正则表达式使用
+软链接
+New-Item -Path C:\LinkDir -ItemType SymbolicLink -Value F:\RealDir
 
-邮件发送
-C#邮件发送
 
-使用Cookies模拟登陆用户操作
-Header中的Set-Cookies和Cookies
-
-定时触发器
-定时触发，与当前信息对比，根据结果发..." />
-    <meta name="keywords" content="爬虫,C#,实践" />
+硬链接
+New-Item -Path C:\Li..." />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -86,55 +81,37 @@ Header中的Set-Cookies和Cookies
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              爬取成绩及考试信息推送给自己
+              使用PowerShell创建硬链接和软链接
             </h2>
             <div class="post-info">
               <span>
-                2019-12-29
+                2020-05-28
               </span>
               <span>
                 1 min read
               </span>
               
-                <a href="https://InMapleWoods.github.io/tag/VgYL0zszd/" class="post-tag">
-                  # 爬虫
-                </a>
-              
-                <a href="https://InMapleWoods.github.io/tag/35E92ukGJ/" class="post-tag">
-                  # C#
-                </a>
-              
-                <a href="https://InMapleWoods.github.io/tag/o204idFSwa/" class="post-tag">
-                  # 实践
-                </a>
-              
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="爬取成绩及考试信息推送给自己">爬取成绩及考试信息推送给自己</h1>
+                <h1 id="使用powershell创建硬链接和软链接">使用PowerShell创建硬链接和软链接</h1>
 <hr>
-<h2 id="正则表达式的使用">正则表达式的使用</h2>
-<p>C#正则表达式使用</p>
+<h2 id="软链接">软链接</h2>
+<pre><code>New-Item -Path C:\LinkDir -ItemType SymbolicLink -Value F:\RealDir
+</code></pre>
 <hr>
-<h2 id="邮件发送">邮件发送</h2>
-<p>C#邮件发送</p>
-<hr>
-<h2 id="使用cookies模拟登陆用户操作">使用Cookies模拟登陆用户操作</h2>
-<p>Header中的Set-Cookies和Cookies</p>
-<hr>
-<h2 id="定时触发器">定时触发器</h2>
-<p>定时触发，与当前信息对比，根据结果发送邮件至通知邮箱</p>
+<h2 id="硬链接">硬链接</h2>
+<pre><code>New-Item -Path C:\LinkDir -ItemType HardLink -Value F:\RealDir
+</code></pre>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#%E7%88%AC%E5%8F%96%E6%88%90%E7%BB%A9%E5%8F%8A%E8%80%83%E8%AF%95%E4%BF%A1%E6%81%AF%E6%8E%A8%E9%80%81%E7%BB%99%E8%87%AA%E5%B7%B1">爬取成绩及考试信息推送给自己</a>
+<li><a href="#%E4%BD%BF%E7%94%A8powershell%E5%88%9B%E5%BB%BA%E7%A1%AC%E9%93%BE%E6%8E%A5%E5%92%8C%E8%BD%AF%E9%93%BE%E6%8E%A5">使用PowerShell创建硬链接和软链接</a>
 <ul>
-<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8">正则表达式的使用</a></li>
-<li><a href="#%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81">邮件发送</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C">使用Cookies模拟登陆用户操作</a></li>
-<li><a href="#%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8">定时触发器</a></li>
+<li><a href="#%E8%BD%AF%E9%93%BE%E6%8E%A5">软链接</a></li>
+<li><a href="#%E7%A1%AC%E9%93%BE%E6%8E%A5">硬链接</a></li>
 </ul>
 </li>
 </ul>
@@ -144,6 +121,15 @@ Header中的Set-Cookies和Cookies
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://InMapleWoods.github.io/post/andriod-xue-xi-jiao-wu-xin-xi-huo-qu-yi/">
+              <h3 class="post-title">
+                Andriod学习——教务信息获取（一）
+              </h3>
+            </a>
+          </div>
         
 
         

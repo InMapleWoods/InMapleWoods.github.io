@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://InMapleWoods.github.io</id>
     <title>林中风吟</title>
-    <updated>2020-05-20T11:57:46.287Z</updated>
+    <updated>2020-05-28T11:50:45.501Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://InMapleWoods.github.io"/>
     <link rel="self" href="https://InMapleWoods.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://InMapleWoods.github.io/images/avatar.png</logo>
     <icon>https://InMapleWoods.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 林中风吟</rights>
+    <entry>
+        <title type="html"><![CDATA[使用PowerShell创建硬链接和软链接]]></title>
+        <id>https://InMapleWoods.github.io/post/shi-yong-powershell-chuang-jian-ying-lian-jie-he-ruan-lian-jie/</id>
+        <link href="https://InMapleWoods.github.io/post/shi-yong-powershell-chuang-jian-ying-lian-jie-he-ruan-lian-jie/">
+        </link>
+        <updated>2020-05-28T11:47:02.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="使用powershell创建硬链接和软链接">使用PowerShell创建硬链接和软链接</h1>
+<hr>
+<h2 id="软链接">软链接</h2>
+<pre><code>New-Item -Path C:\LinkDir -ItemType SymbolicLink -Value F:\RealDir
+</code></pre>
+<hr>
+<h2 id="硬链接">硬链接</h2>
+<pre><code>New-Item -Path C:\LinkDir -ItemType HardLink -Value F:\RealDir
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Andriod学习——教务信息获取（一）]]></title>
         <id>https://InMapleWoods.github.io/post/andriod-xue-xi-jiao-wu-xin-xi-huo-qu-yi/</id>
@@ -372,27 +389,6 @@ CookieHandler.setDefault(manager);
 <p>简而言之，发送端口和接收端口用来与服务器通讯，发送和接收控制指令。录制端口和播放端口用于发送和接收语音数据。</p>
 <hr>
 <p>为了保持会话，服务器定期向主机发送数据包，以防主机内网IP/Port的映射消失。俗称<strong>心跳包</strong>。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[爬取成绩及考试信息推送给自己]]></title>
-        <id>https://InMapleWoods.github.io/post/pa-qu-cheng-ji-ji-kao-shi-xin-xi-tui-song-gei-zi-ji/</id>
-        <link href="https://InMapleWoods.github.io/post/pa-qu-cheng-ji-ji-kao-shi-xin-xi-tui-song-gei-zi-ji/">
-        </link>
-        <updated>2019-12-29T10:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="爬取成绩及考试信息推送给自己">爬取成绩及考试信息推送给自己</h1>
-<hr>
-<h2 id="正则表达式的使用">正则表达式的使用</h2>
-<p>C#正则表达式使用</p>
-<hr>
-<h2 id="邮件发送">邮件发送</h2>
-<p>C#邮件发送</p>
-<hr>
-<h2 id="使用cookies模拟登陆用户操作">使用Cookies模拟登陆用户操作</h2>
-<p>Header中的Set-Cookies和Cookies</p>
-<hr>
-<h2 id="定时触发器">定时触发器</h2>
-<p>定时触发，与当前信息对比，根据结果发送邮件至通知邮箱</p>
 ]]></content>
     </entry>
 </feed>
