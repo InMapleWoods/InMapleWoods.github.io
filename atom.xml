@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://InMapleWoods.github.io</id>
     <title>林中风吟</title>
-    <updated>2020-05-28T11:50:45.501Z</updated>
+    <updated>2020-06-17T02:59:32.349Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://InMapleWoods.github.io"/>
     <link rel="self" href="https://InMapleWoods.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://InMapleWoods.github.io/images/avatar.png</logo>
     <icon>https://InMapleWoods.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 林中风吟</rights>
+    <entry>
+        <title type="html"><![CDATA[git使用3]]></title>
+        <id>https://InMapleWoods.github.io/post/git-shi-yong-3/</id>
+        <link href="https://InMapleWoods.github.io/post/git-shi-yong-3/">
+        </link>
+        <updated>2020-06-17T02:53:22.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="git使用3">git使用3</h1>
+<hr>
+<h2 id="介绍">介绍</h2>
+<p>删除某次提交</p>
+<hr>
+<h2 id="内容">内容</h2>
+<ol>
+<li>
+<p>git log ——查询要删除的提交id</p>
+</li>
+<li>
+<p>git rebase -i {commitId} ——填入最后一条待删除记录的前一条记录ID</p>
+</li>
+<li>
+<p>替换<code>pick</code>为<code>drop</code></p>
+</li>
+<li>
+<p>git push origin master -f  ——强行覆盖远程分支</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[使用PowerShell创建硬链接和软链接]]></title>
         <id>https://InMapleWoods.github.io/post/shi-yong-powershell-chuang-jian-ying-lian-jie-he-ruan-lian-jie/</id>
@@ -336,59 +364,6 @@ CookieHandler.setDefault(manager);
 <p>git merge --no-ff -m {&quot;message&quot;} {newBranch} ——禁用Fast forward，生成合并分支提交</p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[一个简单的P2P语音通信程序]]></title>
-        <id>https://InMapleWoods.github.io/post/yi-ge-jian-dan-de-p2p-yu-yin-tong-xin-cheng-xu/</id>
-        <link href="https://InMapleWoods.github.io/post/yi-ge-jian-dan-de-p2p-yu-yin-tong-xin-cheng-xu/">
-        </link>
-        <updated>2020-02-22T10:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="一个简单的p2p语音通信程序">一个简单的P2P语音通信程序</h1>
-<hr>
-<h2 id="napt的概念及锥型conenat内网穿透">NAPT的概念及锥型（Cone）NAT内网穿透</h2>
-<ul>
-<li>
-<p>NAPT：不仅改变IP地址，还改变发送端口。</p>
-</li>
-<li>
-<p>锥形NAT：存在会话则维护内网IP/Port与外网IP/Port的映射关系，且同一组内网IP/Port与不同外网主机通讯使用同一组IP/Port，不重新分配</p>
-</li>
-</ul>
-<hr>
-<h2 id="p2p的概念">P2P的概念</h2>
-<p>Peer To Peer，端到端的对等网络，每一个既是Server也是Client。</p>
-<hr>
-<h2 id="语音通信实现方法">语音通信实现方法</h2>
-<ul>
-<li>A和B的地址都是内网地址，且在不同的NAT后面</li>
-<li>需要一台服务器做中转</li>
-<li>若由A发起双方的语音通讯</li>
-</ul>
-<ol>
-<li>
-<p>A和B向服务器注册，服务器保存A,B的<strong>公网IP/Port</strong>。（发送端口，接收端口，播放端口，录制端口）</p>
-</li>
-<li>
-<p>A准备发送数据，A<strong>发送端口</strong>向服务器发送<strong>中继请求</strong>，服务器接收请求后向B发送请求。</p>
-</li>
-<li>
-<p>B的<strong>接收端口</strong>发送接收到请求后，B<strong>播放端口</strong>向A的<strong>录制端口</strong>公网IP/Port发送信息,<strong>这就是在B处打洞</strong>。同时B的<strong>发送端口</strong>向服务器发送信息，表明洞已开，同时让A准备接收B的声音信息。</p>
-</li>
-<li>
-<p>服务器接收信息，发送请求，A<strong>接收端口</strong>收到信息后，A的<strong>录制端口</strong>向B的<strong>播放端口</strong>公网IP/Port发送信息，同时A的<strong>播放端口</strong>向B的<strong>录制端口</strong>公网IP/Port发送信息，<strong>这是在A处打洞</strong>。A的<strong>发送端口</strong>向服务器发送信息，表明洞已开，同时让B准备接收A的声音信息。</p>
-</li>
-<li>
-<p>服务器接收信息，发送请求，B<strong>接收端口</strong>收到信息后，B的<strong>录制端口</strong>向A的<strong>播放端口</strong>公网IP/Port发送信息。</p>
-</li>
-<li>
-<p>至此A，B<strong>双方</strong>都能接收到对方的语音信息，两者的连接会话已建立。</p>
-</li>
-</ol>
-<hr>
-<p>简而言之，发送端口和接收端口用来与服务器通讯，发送和接收控制指令。录制端口和播放端口用于发送和接收语音数据。</p>
-<hr>
-<p>为了保持会话，服务器定期向主机发送数据包，以防主机内网IP/Port的映射消失。俗称<strong>心跳包</strong>。</p>
 ]]></content>
     </entry>
 </feed>

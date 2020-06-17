@@ -2,29 +2,34 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>爬取成绩及考试信息推送给自己 | 林中风吟</title>
+<title>git使用3 | 林中风吟</title>
 <link rel="shortcut icon" href="https://InMapleWoods.github.io/favicon.ico?v=1592362766913">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://InMapleWoods.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="爬取成绩及考试信息推送给自己 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="git使用3 | 林中风吟 - Atom Feed" href="https://InMapleWoods.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="爬取成绩及考试信息推送给自己
+    <meta name="description" content="git使用3
 
-正则表达式的使用
-C#正则表达式使用
+介绍
+删除某次提交
 
-邮件发送
-C#邮件发送
+内容
 
-使用Cookies模拟登陆用户操作
-Header中的Set-Cookies和Cookies
 
-定时触发器
-定时触发，与当前信息对比，根据结果发..." />
-    <meta name="keywords" content="爬虫,C#,实践" />
+git log ——查询要删除的提交id
+
+
+git rebase -i {commitId} ——填入最后一条待删除记录的前一条记录ID
+
+
+替换pick为drop
+
+
+git push o..." />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -86,55 +91,48 @@ Header中的Set-Cookies和Cookies
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              爬取成绩及考试信息推送给自己
+              git使用3
             </h2>
             <div class="post-info">
               <span>
-                2019-12-29
+                2020-06-17
               </span>
               <span>
                 1 min read
               </span>
               
-                <a href="https://InMapleWoods.github.io/tag/VgYL0zszd/" class="post-tag">
-                  # 爬虫
-                </a>
-              
-                <a href="https://InMapleWoods.github.io/tag/35E92ukGJ/" class="post-tag">
-                  # C#
-                </a>
-              
-                <a href="https://InMapleWoods.github.io/tag/o204idFSwa/" class="post-tag">
-                  # 实践
-                </a>
-              
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="爬取成绩及考试信息推送给自己">爬取成绩及考试信息推送给自己</h1>
+                <h1 id="git使用3">git使用3</h1>
 <hr>
-<h2 id="正则表达式的使用">正则表达式的使用</h2>
-<p>C#正则表达式使用</p>
+<h2 id="介绍">介绍</h2>
+<p>删除某次提交</p>
 <hr>
-<h2 id="邮件发送">邮件发送</h2>
-<p>C#邮件发送</p>
-<hr>
-<h2 id="使用cookies模拟登陆用户操作">使用Cookies模拟登陆用户操作</h2>
-<p>Header中的Set-Cookies和Cookies</p>
-<hr>
-<h2 id="定时触发器">定时触发器</h2>
-<p>定时触发，与当前信息对比，根据结果发送邮件至通知邮箱</p>
+<h2 id="内容">内容</h2>
+<ol>
+<li>
+<p>git log ——查询要删除的提交id</p>
+</li>
+<li>
+<p>git rebase -i {commitId} ——填入最后一条待删除记录的前一条记录ID</p>
+</li>
+<li>
+<p>替换<code>pick</code>为<code>drop</code></p>
+</li>
+<li>
+<p>git push origin master -f  ——强行覆盖远程分支</p>
+</li>
+</ol>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#%E7%88%AC%E5%8F%96%E6%88%90%E7%BB%A9%E5%8F%8A%E8%80%83%E8%AF%95%E4%BF%A1%E6%81%AF%E6%8E%A8%E9%80%81%E7%BB%99%E8%87%AA%E5%B7%B1">爬取成绩及考试信息推送给自己</a>
+<li><a href="#git%E4%BD%BF%E7%94%A83">git使用3</a>
 <ul>
-<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8">正则表达式的使用</a></li>
-<li><a href="#%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81">邮件发送</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8cookies%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C">使用Cookies模拟登陆用户操作</a></li>
-<li><a href="#%E5%AE%9A%E6%97%B6%E8%A7%A6%E5%8F%91%E5%99%A8">定时触发器</a></li>
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E5%86%85%E5%AE%B9">内容</a></li>
 </ul>
 </li>
 </ul>
@@ -144,6 +142,15 @@ Header中的Set-Cookies和Cookies
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://InMapleWoods.github.io/post/shi-yong-powershell-chuang-jian-ying-lian-jie-he-ruan-lian-jie/">
+              <h3 class="post-title">
+                使用PowerShell创建硬链接和软链接
+              </h3>
+            </a>
+          </div>
         
 
         
